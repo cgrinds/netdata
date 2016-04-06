@@ -323,8 +323,6 @@
 		var netdataTheme = getTheme('slate');
 
 		function setTheme(theme) {
-			if(theme === netdataTheme) return false;
-
 			return saveLocalStorage('netdataTheme', theme);
 		}
 	</script>
@@ -635,7 +633,7 @@
 					<!-- Tab panes -->
 					<div class="tab-content">
 						<div role="tabpanel" class="tab-pane active" id="settings_performance">
-							<form id="optionsForm1" method="get" class="form-horizontal">
+							<form id="optionsForm" method="get" class="form-horizontal">
 								<div class="form-group">
 									<table>
 									<tr class="option-row">
@@ -663,7 +661,7 @@
 							</form>
 						</div>
 						<div role="tabpanel" class="tab-pane" id="settings_sync">
-							<form id="optionsForm2" method="get" class="form-horizontal">
+							<form id="optionsForm" method="get" class="form-horizontal">
 								<div class="form-group">
 									<table>
 									<tr class="option-row">
@@ -705,7 +703,7 @@
 							</form>
 						</div>
 						<div role="tabpanel" class="tab-pane" id="settings_visual">
-							<form id="optionsForm3" method="get" class="form-horizontal">
+							<form id="optionsForm" method="get" class="form-horizontal">
 								<div class="form-group">
 									<table>
 									<tr class="option-row">
@@ -1016,7 +1014,7 @@ var chartData = {
 
 	'system.idlejitter': {
 		colors: '#5555AA',
-		info: 'Idle jitter is calculated by netdata. A thread is spawned that requests to sleep for a few microseconds. When the system wakes it up, it measures how many microseconds have passed. The different between the requested and the actual duration of the sleep, is the <b>idle jitter</b>. This number is useful in realtime environments, where CPU jitter can affect the quality of the service (like VoIP media gateways).'
+		info: 'Idle jitter is calculated by netdata. A thread is spawned that requests to sleep for a few microseconds. When the system wakes it up, it measures how many microseconds have passed. The difference between the requested and the actual duration of the sleep, is the <b>idle jitter</b>. This number is useful in realtime environments, where CPU jitter can affect the quality of the service (like VoIP media gateways).'
 	},
 
 	'system.ipv4': {
@@ -1819,7 +1817,7 @@ function finalizePage() {
 
 	// this has to be the last
 	// it reloads the page
-	$('#netdata_theme_control').change(function() {
+	$('#netdata_theme_control').change(function()           {
 		if(setTheme($(this).prop('checked')?'slate':'default'))
 			location.reload();
 	});
